@@ -201,5 +201,4 @@ print("是否可达：", ok)
 **参考**
 - 源码位置: [robot_solver.py](robot_solver.py)
 - 示例运行脚本: demo_1.py、demo_2.py、demo_3.py
-
-如需我把这个文档提交为 README.md（替换仓库原有 README），或再把每个示例写成可执行的小脚本，请告诉我。
+分别展示了franka panda 与 极智嘉 以及 UR5机械臂 的轨迹运行效果
