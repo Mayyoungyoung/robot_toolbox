@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot name="open_manipulator_y_ik">
+
+  <!-- Base link (world attachment) -->
+  <link name="robot_base"/>
+
+  <!-- Link1 -->
+  <link name="link1">
+    <!-- optional visual -->
+    <!--
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="assets/link1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    -->
+  </link>
+
+  <joint name="joint1" type="revolute">
+    <parent link="robot_base"/>
+    <child link="link1"/>
+    <!-- MuJoCo: link1 pos="0 0 0.17" relative to robot_base -->
+    <origin xyz="0 0 0.17" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.28319" upper="6.28319" effort="2000" velocity="10"/>
+  </joint>
+
+  <!-- Link2 -->
+  <link name="link2"/>
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <!-- MuJoCo: link2 pos="0 -0.1215 0" -->
+    <origin xyz="0 -0.1215 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28319" upper="6.28319" effort="2000" velocity="10"/>
+  </joint>
+
+  <!-- Link3 -->
+  <link name="link3"/>
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <!-- MuJoCo: link3 pos="0 0 0.247" -->
+    <origin xyz="0 0 0.247" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28319" upper="6.28319" effort="2000" velocity="10"/>
+  </joint>
+
+  <!-- Link4 -->
+  <link name="link4"/>
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <!-- MuJoCo: link4 pos="0 0.1215 0.2195" -->
+    <origin xyz="0 0.1215 0.2195" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28319" upper="6.28319" effort="2000" velocity="10"/>
+  </joint>
+
+  <!-- Link5 -->
+  <link name="link5"/>
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <!-- MuJoCo: link5 pos="0 -0.113 0" -->
+    <origin xyz="0 -0.113 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.28319" upper="6.28319" effort="2000" velocity="10"/>
+  </joint>
+
+  <!-- Link6 -->
+  <link name="link6"/>
+  <joint name="joint6" type="revolute">
+    <parent link="link5"/>
+    <child link="link6"/>
+    <!-- MuJoCo: link6 pos="0 0 0.1155" -->
+    <origin xyz="0 0 0.1155" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28319" upper="6.28319" effort="2000" velocity="10"/>
+  </joint>
+
+  <!-- TCP link: MuJoCo body name="tcp_link" pos="0 -0.22 0" under link6 -->
+  <link name="tcp_link"/>
+  <joint name="tcp_fixed" type="fixed">
+    <parent link="link6"/>
+    <child link="tcp_link"/>
+    <origin xyz="0 -0.22 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>
